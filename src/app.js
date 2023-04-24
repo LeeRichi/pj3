@@ -40,7 +40,7 @@ function addTask(event) {
   tasks.push(task);
 
   const taskEl = document.createElement('li');
-  taskEl.innerHTML = `Task: ${task.name}. <br>Deadline: ${task.date} <br>Progress:${task.progress}`;
+  taskEl.innerHTML = `Task: ${task.name} <br>Deadline: ${task.date} <br>Progress:${task.progress}`;
   taskListEl.appendChild(taskEl);
 
   taskCountEl.innerHTML = `Total Tasks: ${tasks.length}`;
@@ -79,7 +79,7 @@ function editTask(task, index) {
     tasks[index].progress = taskProgressInputEl.value;
 
     // Update the task in the task list element
-    taskListEl.children[index].innerHTML = `Task: ${task.name}. <br>Deadline: ${task.date} <br>Progress:${task.progress}`;
+    taskListEl.children[index].innerHTML = `Task: ${task.name} <br>Deadline: ${task.date} <br>Progress:${task.progress}`;
 
     // Hide the task form and show the home page
     hideForm();
@@ -88,6 +88,10 @@ function editTask(task, index) {
     submitTaskBtnEl.innerHTML = 'Add Task';
     submitTaskBtnEl.removeEventListener('click', arguments.callee);
     submitTaskBtnEl.addEventListener('click', addTask);
+
+    titleEl.innerHTML = 'ADD NEW TASK';
+    submitTaskBtnEl.innerHTML = 'Confirm';
+    deleteTaskBtnEl.style.display = 'none';
   });
 
   // Delete section
