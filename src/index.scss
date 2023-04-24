@@ -1,0 +1,130 @@
+// Variables
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$light-color: #f8f9fa;
+$dark-color: #343a40;
+
+// Global Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} 
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: $light-color;
+
+//   border: 1px solid black;
+  width: 60%;
+  margin: 10em auto ;
+}
+
+h1 {
+  font-size: 2rem;
+  color: $primary-color;
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: $dark-color;
+}
+
+input[type="text"],
+input[type="date"],
+select {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid $secondary-color;
+  margin-bottom: 1rem;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+// Home Page
+#home {
+  display: block;
+  text-align: center;
+  #add-task-btn {
+    background-color: $primary-color;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+
+  #task-list {
+    list-style: none;
+    margin-bottom: 1rem;
+
+    li {
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: 1px solid $secondary-color;
+      margin-bottom: 0.5rem;
+
+      &.not-started {
+        background-color: $light-color;
+      }
+
+      &.in-progress {
+        background-color: #ffc107;
+      }
+
+      &.done {
+        background-color: #28a745;
+        color: #fff;
+      }
+    }
+  }
+
+  #task-count {
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  #clear-task-btn {
+    background-color: $secondary-color;
+    color: #fff;
+
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+// Task Form
+#task-form {
+  display: none;
+  text-align: center;
+  border: 1px solid black;
+
+  h1 {
+    margin-bottom: 1rem;
+  }
+
+  form {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  #submit-task-btn {
+    background-color: $primary-color;
+    color: #fff;
+    margin-right: 0.5rem;
+  }
+
+  #cancel-task-btn {
+    background-color: $secondary-color;
+    color: #fff;
+  }
+}

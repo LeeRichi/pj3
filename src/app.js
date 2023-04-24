@@ -19,8 +19,6 @@ taskCountEl.innerHTML = `Total Tasks: ${tasks.length}`;
 // Show form function
 function showForm() {
   taskFormEl.style.display = 'block';
-  // addTaskBtnEl.style.display = 'none';
-  // clearTaskBtnEl.style.display = 'none';
   homeEl.style.display = 'none';
 }
 
@@ -28,8 +26,6 @@ function showForm() {
 // Hide form function
 function hideForm() {
   taskFormEl.style.display = 'none';
-  // addTaskBtnEl.style.display = 'block';
-  // clearTaskBtnEl.style.display = 'block';
   homeEl.style.display = 'block';
 }
 
@@ -41,7 +37,6 @@ function addTask(event) {
     date: taskDateInputEl.value,
     progress: taskProgressInputEl.value
   };
-
   tasks.push(task);
 
   // Add task to task list element
@@ -60,19 +55,15 @@ function addTask(event) {
 
 // Clear tasks function
 function clearTasks() {
-  // Clear tasks array
   tasks = [];
-
   // Clear task list element
   taskListEl.innerHTML = '';
-
   taskCountEl.innerHTML = `Total Tasks: ${tasks.length}`;
 }
 
 
 // edit function
-function editTask(task, index)
-{
+function editTask(task, index){
   taskFormEl.style.display = 'block';
   homeEl.style.display = 'none';
 
@@ -80,12 +71,36 @@ function editTask(task, index)
   taskDateInputEl.value = task.date;
   taskProgressInputEl.value = task.progress;
 
-  titleEl.innerHTML = 'Update page'
+  titleEl.innerHTML = 'EDIT TASK'
   submitTaskBtnEl.innerHTML = 'Update Task';
   submitTaskBtnEl.removeEventListener('click', addTask);
+  //delete section
+  //make a delete button
+  const deleteTaskBtnEl = document.createElement('button');
+  deleteTaskBtnEl.innerHTML = 'Delete Task';
+  taskFormEl.appendChild(deleteTaskBtnEl);
+
+  deleteTaskBtnEl.addEventListener('click', function(event){
+    event.preventDefault();
+    tasks.splice(index, 1); // Remove task from tasks array
+    taskListEl.removeChild(taskListEl.children[index]); // Remove task from task list element
+    // console.log(tasks)
+    taskCountEl.innerHTML = `Total Tasks: ${tasks.length}`;
+    hideForm(); // Hide the task form and show the home page
+  });
+
+  
+
+
+  
 
   submitTaskBtnEl.addEventListener('click', function(event) {
     event.preventDefault();
+    if (tasks.length === 0) {
+      showForm();
+    } else {
+      addTask(event);
+    }
 
     // Update the task in the array
     tasks[index] = {
@@ -105,6 +120,9 @@ function editTask(task, index)
     submitTaskBtnEl.removeEventListener('click', arguments.callee);
     submitTaskBtnEl.addEventListener('click', addTask);
   });
+
+  
+
 
 }
 
