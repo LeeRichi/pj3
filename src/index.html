@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Todo App</title>
+	<meta charset="utf-8" />
+  <link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+	<div id="task-form" style="display: none;">
+		<form>
+      <h1 id="page">add new Task</h1>
+			<label for="task-name">Task Name:</label>
+			<input type="text" id="task-name" name="task-name" required><br><br>
+			<label for="task-date">Due Date:</label>
+			<input type="date" id="task-date" name="task-date" required><br><br>
+			<label for="task-progress">Progress:</label>
+			<select id="task-progress" name="task-progress">
+				<option value="not-started">Not Started</option>
+				<option value="in-progress">In Progress</option>
+				<option value="done">Done</option>
+			</select><br><br>
+			<button type="submit" id="submit-task-btn">Confirm</button>
+			<button type="button" id="cancel-task-btn">Cancel</button>
+		</form>
+	</div>
+  <div id="home" style="display: block">
+    <h1 id="page">home page</h1>
+    <button id="add-task-btn">Add NEW ITEM+</button>
+    <ul id="task-list"></ul>
+    <div id="task-count"></div>
+    <button id="clear-task-btn" style="display: block">Clear Tasks</button>
+  </div>
+	<script src="app.js"></script>
+</body>
+</html>
