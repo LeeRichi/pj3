@@ -14,6 +14,7 @@ const clearTaskBtnEl = document.getElementById('clear-task-btn');
 
 let tasks = [];
 taskCountEl.innerHTML = `Total Tasks: ${tasks.length}`;
+// taskCountEl.innerHTML = `Total Tasks: ${tasks}`;
 
 
 // Show form function
@@ -62,8 +63,71 @@ function clearTasks() {
 }
 
 
-// edit function
-function editTask(task, index){
+// // edit function
+// function editTask(task, index){
+//   taskFormEl.style.display = 'block';
+//   homeEl.style.display = 'none';
+
+//   taskNameInputEl.value = task.name;
+//   taskDateInputEl.value = task.date;
+//   taskProgressInputEl.value = task.progress;
+
+//   titleEl.innerHTML = 'EDIT TASK'
+//   submitTaskBtnEl.innerHTML = 'Update Task';
+//   submitTaskBtnEl.removeEventListener('click', addTask);
+  
+//   //delete section
+//   //make a delete button
+//   const deleteTaskBtnEl = document.createElement('button');
+//   deleteTaskBtnEl.innerHTML = 'Delete Task';
+//   taskFormEl.appendChild(deleteTaskBtnEl);
+
+//   deleteTaskBtnEl.addEventListener('click', function(event){
+//     event.preventDefault();
+//     tasks.splice(index, 1); // Remove task from tasks array
+//     taskListEl.removeChild(taskListEl.children[index]); // Remove task from task list element
+//     // console.log(tasks)
+//     taskCountEl.innerHTML = `Total Tasks: ${tasks.length}`;
+//     hideForm(); // Hide the task form and show the home page
+//     titleEl.innerHTML = 'ADD NEW TASK'
+//     submitTaskBtnEl.innerHTML = 'Confirm';
+//     deleteTaskBtnEl.style.display = 'none';
+//   });
+
+  
+
+
+  
+
+//   submitTaskBtnEl.addEventListener('click', function(event) {
+//     event.preventDefault();
+//     if (tasks.length === 0) {
+//       showForm();
+//     } else {
+//       addTask(event);
+//     }
+
+//     // Update the task in the array
+//     tasks[index] = {
+//       name: taskNameInputEl.value,
+//       date: taskDateInputEl.value,
+//       progress: taskProgressInputEl.value
+//     };
+
+//     // Update the task in the task list element
+//     taskListEl.children[index].innerHTML = `${tasks[index].name} - ${tasks[index].date} - ${tasks[index].progress}`;
+
+//     // Hide the task form and show the home page
+//     hideForm();
+
+//     // Change the update button back to a submit button
+//     submitTaskBtnEl.innerHTML = 'Add Task';
+//     submitTaskBtnEl.removeEventListener('click', arguments.callee);
+//     submitTaskBtnEl.addEventListener('click', addTask);
+//   });
+// }
+
+function editTask(task, index) {
   taskFormEl.style.display = 'block';
   homeEl.style.display = 'none';
 
@@ -71,43 +135,18 @@ function editTask(task, index){
   taskDateInputEl.value = task.date;
   taskProgressInputEl.value = task.progress;
 
-  titleEl.innerHTML = 'EDIT TASK'
+  titleEl.innerHTML = 'EDIT TASK';
   submitTaskBtnEl.innerHTML = 'Update Task';
+
   submitTaskBtnEl.removeEventListener('click', addTask);
-  //delete section
-  //make a delete button
-  const deleteTaskBtnEl = document.createElement('button');
-  deleteTaskBtnEl.innerHTML = 'Delete Task';
-  taskFormEl.appendChild(deleteTaskBtnEl);
-
-  deleteTaskBtnEl.addEventListener('click', function(event){
-    event.preventDefault();
-    tasks.splice(index, 1); // Remove task from tasks array
-    taskListEl.removeChild(taskListEl.children[index]); // Remove task from task list element
-    // console.log(tasks)
-    taskCountEl.innerHTML = `Total Tasks: ${tasks.length}`;
-    hideForm(); // Hide the task form and show the home page
-  });
-
-  
-
-
-  
 
   submitTaskBtnEl.addEventListener('click', function(event) {
     event.preventDefault();
-    if (tasks.length === 0) {
-      showForm();
-    } else {
-      addTask(event);
-    }
 
     // Update the task in the array
-    tasks[index] = {
-      name: taskNameInputEl.value,
-      date: taskDateInputEl.value,
-      progress: taskProgressInputEl.value
-    };
+    tasks[index].name = taskNameInputEl.value;
+    tasks[index].date = taskDateInputEl.value;
+    tasks[index].progress = taskProgressInputEl.value;
 
     // Update the task in the task list element
     taskListEl.children[index].innerHTML = `${tasks[index].name} - ${tasks[index].date} - ${tasks[index].progress}`;
@@ -121,10 +160,32 @@ function editTask(task, index){
     submitTaskBtnEl.addEventListener('click', addTask);
   });
 
-  
+  // Delete section
+  const deleteTaskBtnEl = document.createElement('button');
+  deleteTaskBtnEl.innerHTML = 'Delete Task';
+  taskFormEl.appendChild(deleteTaskBtnEl);
 
+  deleteTaskBtnEl.addEventListener('click', function(event) {
+    event.preventDefault();
 
+    tasks.splice(index, 1);
+    taskListEl.removeChild(taskListEl.children[index]);
+
+    taskCountEl.innerHTML = `Total Tasks: ${tasks.length}`;
+    hideForm();
+
+    titleEl.innerHTML = 'ADD NEW TASK';
+    submitTaskBtnEl.innerHTML = 'Confirm';
+    deleteTaskBtnEl.style.display = 'none';
+
+    // Change the update button back to a submit button
+    submitTaskBtnEl.innerHTML = 'Add Task';
+    submitTaskBtnEl.removeEventListener('click', arguments.callee);
+    submitTaskBtnEl.addEventListener('click', addTask);
+    deleteTaskBtnEl.style.display = 'none';
+  });
 }
+
 
 // Event listeners
 addTaskBtnEl.addEventListener('click', showForm);
