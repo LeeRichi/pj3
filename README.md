@@ -1,14 +1,23 @@
-# To-do list
+## Key Concepts
+1. Javascript DOM Manipulate, includes fetcing elements, changing the value of the elements.
+2. Adding function, editing function, and delete function logics are implemented.
 
-Create a simple application to let users add/remove/edit tasks.
-Tasks should have: title, deadline, status
-![task-list](task_list.png)
-![add-task](add_task.png)
-![edit-task](edit_task.png)
+## Tech Stack
+Javascript
+Scss
 
-## Requirements
-* `Title` should be unique
-* `Status` is one of 3 options : `["not started", "in progress", "done"]`
-* Form to add/edit tasks should be opened/closed by clicking on a button (see the screenshot)
-* Deploy your project to github page and provide link to your live server in README. Make sure your README file is informative and codes are well-formatted
-* Only minimum style (with SASS) is needed.
+## Result
+My deployment URL: project3-todoapp-leechi.netlify.app
+
+## Sturcture
+````
+.
+├── README.md
+└── src
+    ├── app.js
+    ├── index.css
+    ├── index.css.map
+    ├── index.html
+    ├── index.js
+    └── index.scss
+````
